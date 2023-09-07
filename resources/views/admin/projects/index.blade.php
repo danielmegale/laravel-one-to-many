@@ -13,6 +13,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">URL</th>
                 <th scope="col">Description</th>
                 <th scope="col">Creato il</th>
@@ -25,6 +26,7 @@
                 <tr>
                     <th scope="row">{{ $project->id }}</th>
                     <td>{{ $project->title }}</td>
+                    <td>{{ $project->category?->label }}</td>
                     <td><a href="{{ $project->url }}">{{ $project->url }}</a></td>
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->created_at }}</td>

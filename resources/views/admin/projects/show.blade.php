@@ -13,7 +13,8 @@
         <p>{{ $project->description }}</p>
         <div>
             <strong>Creato il:</strong>{{ $project->created_at }}
-            <strong>Ultima modifica:</strong>{{ $project->update_at }}
+            <strong>Ultima modifica:</strong>{{ $project->updated_at }}
+            <strong>Categoria:</strong>{{ $project->category?->label }}
         </div>
     </div>
     <hr>

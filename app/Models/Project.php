@@ -12,4 +12,9 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = ['title', 'description'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
