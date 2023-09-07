@@ -26,7 +26,14 @@
                 <tr>
                     <th scope="row">{{ $project->id }}</th>
                     <td>{{ $project->title }}</td>
-                    <td>{{ $project->category?->label }}</td>
+                    <td>
+                        @if ($project->category)
+                            <span class="badge "
+                                style="background-color:{{ $project->category->color }} ">{{ $project->category->label }}</span>
+                        @else
+                            -
+                        @endif
+                    </td>
                     <td><a href="{{ $project->url }}">{{ $project->url }}</a></td>
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->created_at }}</td>

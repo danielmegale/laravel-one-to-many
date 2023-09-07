@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -24,7 +25,8 @@ class ProjectController extends Controller
     public function create(Project $project)
     {
         $project = new Project();
-        return view('admin.projects.create', compact('project'));
+        $categories = Category::all();
+        return view('admin.projects.create', compact('project', 'categories'));
     }
 
     /**
@@ -38,6 +40,7 @@ class ProjectController extends Controller
                 'description' => 'required|string',
                 'image' => 'nullable|image',
                 'url' => 'nullable|string',
+                'category_id' => 'nullable|exists:categories,id',
             ],
             [
                 'title.required' => 'Il titolo è obligatorio',
@@ -72,7 +75,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $categories = Category::all();
+        return view('admin.projects.edit', compact('project', 'categories'));
     }
 
     /**
@@ -86,6 +90,7 @@ class ProjectController extends Controller
                 'description' => 'required|string',
                 'image' => 'nullable|image',
                 'url' => 'nullable|string',
+                'category_id' => 'nullable|exists:categories,id',
             ],
             [
                 'title.required' => 'Il titolo è obligatorio',

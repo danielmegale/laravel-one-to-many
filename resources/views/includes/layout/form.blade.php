@@ -32,7 +32,20 @@
             @enderror
         </div>
     </div>
-    <div class="col-11">
+    <div class="col-6">
+        <div class="mb-3">
+            <label for="category-id" class="form-label">Categoria</label>
+            <select class="form-select" id="category" name="category_id">
+                <option value="1">Nessuna</option>
+                @foreach ($categories as $category)
+                    <option @if (old('category_id', $project->category_id) == $category->id) selected @endif value="{{ $category->id }}">
+                        {{ $category->label }}</option>
+                @endforeach
+            </select>
+
+        </div>
+    </div>
+    <div class="col-5">
         <div class="mb-3">
             <label for="image" class="form-label">Immagine</label>
             <input type="file" class="form-control" id="image" name="image"

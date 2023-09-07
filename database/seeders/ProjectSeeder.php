@@ -18,9 +18,10 @@ class ProjectSeeder extends Seeder
         Storage::makeDirectory('project_image');
         for ($i = 1; $i <= 3; $i++) {
             $project = new Project();
+            $project->category_id = $faker->numberBetween(1, 5);
             $project->title = $faker->text(20);
             $project->description = $faker->paragraph(15, true);
-            $project->image = $faker->image(storage_path('app/public/project_image'), 250, 250);
+            // $project->image = Storage::putFile('project_images', $faker->image(storage_path('app/public/project_images')), 250, 250);
             $project->url = $faker->url();
             $project->save();
         }
